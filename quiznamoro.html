@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+       <meta charset="UTF-8">
+       <title>Quiz do Amor </title>
+
+      <style>
+       body{
+    background:rgb(0, 0, 0);
+    font-family:Arial;
+    text-align:center;
+    padding:40px;
+}
+
+       .caixa{
+    background:rgb(241, 7, 7);
+    max-width:600px;
+    margin:auto;
+    padding:30px;
+    border-radius:20px;
+}
+
+      input{
+    padding:10px;
+    font-size:18px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+      button{
+    padding:12px 20px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:rgb(0, 17, 255); 
+    color:white;
+}
+      </style>
+    </head>
+
+     <body>
+
+    <div class="caixa">
+
+    <h1>Quiz do Amor </h1>
+
+    <div id="inicio">
+        <h2>Digite seu nome:</h2>
+
+        <input
+            type="text"
+            id="nome"
+            placeholder="Seu nome"
+        >
+
+        <br><br>
+
+        <button onclick="comecar()">
+            Começar
+        </button>
+    </div>
+
+    <div id="quiz" style="display:none;">
+        <h2 id="pergunta"></h2>
+
+        <button onclick="responder()">
+            Sim
+        </button>
+
+        <button onclick="responder()">
+            Muito
+        </button>
+    </div>
+
+    <h2 id="final"></h2>
+
+    </div>
+
+    <script>
+
+    let etapa = 0;
+    let nomePessoa = "";
+
+    const perguntas = [
+    "Voce gosta de mim?",
+    "Voce sorri quando fala comigo?",
+    "Voce gosta de passar o tempo comigo?",
+    "Vvoce está preparada para a prgunta final?"
+];
+
+    function comecar(){
+
+    nomePessoa =
+        document.getElementById("nome").value;
+
+    if(nomePessoa.trim() === ""){
+        alert("Digite seu nome!");
+        return;
+    }
+
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+
+    document.getElementById("pergunta").innerText =
+        nomePessoa + ", " + perguntas[0];
+}
+
+    function responder(){
+
+    etapa++;
+
+    if(etapa < perguntas.length){
+
+        document.getElementById("pergunta").innerText =
+            nomePessoa + ", " + perguntas[etapa];
+
+    }else{
+
+        document.getElementById("quiz").style.display = "none";
+
+        document.getElementById("final").innerHTML =
+
+            nomePessoa +
+
+            ", depois de tudo isso eu preciso te perguntar uma coisa... ❤️<br><br>" +
+
+            "Você aceita namorar comigo? 💍<br><br>" +
+
+            "<button onclick='sim()'>SIM ❤️</button>" +
+
+            "<button onclick='nao()'>NÃO 😢</button>";
+    }
+}
+
+     function sim(){
+
+    document.getElementById("final").innerHTML =
+
+        "❤️ Parabéns " +
+
+        nomePessoa +
+
+        "! agora vamos embora e morar juntos ! ❤️😍";
+}
+
+    function nao(){
+
+    document.getElementById("final").innerHTML =
+
+        "Resposta inválida detectada 😂<br><br>" +
+
+        nomePessoa +
+
+        ", vamos tentar novamente...<br><br>" +
+
+        "Você aceita namorar comigo? ❤️";
+}
+
+     </script>
+
+      </body>
+</html>
